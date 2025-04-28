@@ -1,0 +1,121 @@
+.videomeet {
+  padding: 50px;
+  display: flex;
+}
+
+.connect {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 50px;
+}
+
+.connect button {
+  margin: 15px;
+  padding: 13px;
+  background-color: #7c4dff;
+}
+
+.myvideo {
+  width: 30vw;
+  border-radius: 20px;
+}
+
+@media (max-width: 768px) {
+  .videomeet {
+    display: grid;
+  }
+  .connect h1 {
+    font-size: 22px;
+  }
+  .connect p {
+    font-size: 14px;
+  }
+  .myvideo {
+    width: 75vw;
+  }
+}
+@media (max-width: 480px) {
+  .connect h1 {
+    font-size: 20px;
+  }
+}
+.meetVideoContainer {
+  position: relative;
+  height: 100vh;
+  background: rgb(1, 4, 48);
+}
+
+.meetUserVideo {
+  position: absolute;
+  bottom: 10vh;
+  height: 20vh;
+  width: auto;
+  left: 0;
+  border-radius: 20px;
+}
+
+.buttonContainers {
+  position: absolute;
+  width: 100vw;
+  bottom: 0;
+  text-align: center;
+}
+
+.buttonContainer svg {
+  font-size: 500px;
+}
+
+.conferenceView {
+  display: flex;
+  padding: 1px;
+  gap: 10px;
+}
+
+.conferenceView video {
+  width: 40vw;
+  height: 20vh;
+  min-width: 30vw;
+  border-radius: 10px;
+}
+
+.chatRoom {
+  position: absolute;
+  height: 100vh;
+  right: 0;
+  background: white;
+  width: 30vw;
+  padding-inline: 20px;
+}
+
+.chatContainer {
+  position: relative;
+  height: 100%;
+}
+
+.chattingArea {
+  position: absolute;
+  display: flex;
+  flex-direction: row;
+}
+
+@media (max-width: 768px) {
+  .buttonContainers {
+    text-align: left;
+  }
+  .chattingArea {
+    display: grid;
+    gap: 10px;
+  }
+}
+.chattingArea Button {
+  padding: 0 1rem;
+  font-weight: bold;
+  font-size: 1rem;
+}
+
+.chattingDisplay {
+  height: 80vh;
+  overflow-y: scroll;
+}
