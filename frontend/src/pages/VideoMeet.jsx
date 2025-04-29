@@ -19,7 +19,7 @@ var connections = {};
 const iceCandidatesQueue = {};
 
 const peerConfigConnections = {
-  iceServers: [{ "urls": "stun:stun.l.google.com:19302" }],
+  iceServers: [{ urls: "stun:stun.l.google.com:19302" }],
 };
 
 export default function VideoMeetComponent() {
@@ -56,7 +56,11 @@ export default function VideoMeetComponent() {
 
   let [videos, setVideos] = useState([]);
 
-  
+  // TODO
+  // if(isChrome() === false) {
+
+  // }
+
   useEffect(() => {
     getPermissions();
   }, []);
@@ -472,8 +476,17 @@ export default function VideoMeetComponent() {
     window.location.href = "/";
   };
 
+  let openChat = () => {
+    setModal(true);
+    setNewMessages(0);
+  };
+
   let closeChat = () => {
     setModal(false);
+  };
+
+  let handleMessage = (e) => {
+    setMessage(e.target.value);
   };
 
   const addMessage = (data, sender, socketIdSender) => {
@@ -526,10 +539,8 @@ export default function VideoMeetComponent() {
           {showModal ? (
             <div className={styles.chatRoom}>
               <div className={styles.chatContainer}>
-                <div className={styles.chat}>
                 <h1>Chat</h1>
-                <i class="fa-solid fa-xmark" style={{height:"20px"}} onClick={closeChat}></i>
-                </div>
+
                 <div className={styles.chattingDisplay}>
                   {messages.length !== 0 ? (
                     messages.map((item, index) => {
@@ -590,6 +601,7 @@ export default function VideoMeetComponent() {
             <Badge badgeContent={newMessages} max={999} color="orange">
               <IconButton
                 onClick={() => setModal(!showModal)}
+                style={{ color: "white" }}
               >
                 <ChatIcon />
               </IconButton>
@@ -614,7 +626,7 @@ export default function VideoMeetComponent() {
                 autoPlay
                 playsInline
               />
-             </div>
+            </div>
           ))}
         </div>
       )}
