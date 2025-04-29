@@ -19,7 +19,7 @@ var connections = {};
 const iceCandidatesQueue = {};
 
 const peerConfigConnections = {
-  iceServers: [{ urls: "stun:stun.l.google.com:19302" }],
+  iceServers: [{ "urls": "stun:stun.l.google.com:19302" }],
 };
 
 export default function VideoMeetComponent() {
@@ -476,11 +476,6 @@ export default function VideoMeetComponent() {
     window.location.href = "/";
   };
 
-  let openChat = () => {
-    setModal(true);
-    setNewMessages(0);
-  };
-
   let closeChat = () => {
     setModal(false);
   };
@@ -611,7 +606,6 @@ export default function VideoMeetComponent() {
             ref={localVideoRef}
             autoPlay
           />
-          <h3  style={{color:"white" ,fontFamily:"sans-serif"}}>{username} Screen</h3>
 
           {videos.map((video) => (
             <div className={styles.conferenceView} key={video.socketId}>
@@ -625,7 +619,7 @@ export default function VideoMeetComponent() {
                 autoPlay
                 playsInline
               />
-              
+              {/* <h3>{username}</h3> */}
             </div>
           ))}
         </div>
