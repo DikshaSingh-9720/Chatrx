@@ -56,11 +56,7 @@ export default function VideoMeetComponent() {
 
   let [videos, setVideos] = useState([]);
 
-  // TODO
-  // if(isChrome() === false) {
-
-  // }
-
+  
   useEffect(() => {
     getPermissions();
   }, []);
@@ -594,7 +590,6 @@ export default function VideoMeetComponent() {
             <Badge badgeContent={newMessages} max={999} color="orange">
               <IconButton
                 onClick={() => setModal(!showModal)}
-                style={{ color: "white" }}
               >
                 <ChatIcon />
               </IconButton>
@@ -619,8 +614,7 @@ export default function VideoMeetComponent() {
                 autoPlay
                 playsInline
               />
-              {/* <h3>{username}</h3> */}
-            </div>
+             </div>
           ))}
         </div>
       )}
