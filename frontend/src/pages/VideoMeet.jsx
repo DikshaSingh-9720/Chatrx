@@ -539,8 +539,10 @@ export default function VideoMeetComponent() {
           {showModal ? (
             <div className={styles.chatRoom}>
               <div className={styles.chatContainer}>
+                <div className={styles.chat}>
                 <h1>Chat</h1>
-
+                <i class="fa-solid fa-xmark" onClick={closeChat} style={{height:"25px"}}></i>
+                </div>
                 <div className={styles.chattingDisplay}>
                   {messages.length !== 0 ? (
                     messages.map((item, index) => {
@@ -613,6 +615,7 @@ export default function VideoMeetComponent() {
             ref={localVideoRef}
             autoPlay
           />
+          <h2>{username} Screen</h2>
 
           {videos.map((video) => (
             <div className={styles.conferenceView} key={video.socketId}>
