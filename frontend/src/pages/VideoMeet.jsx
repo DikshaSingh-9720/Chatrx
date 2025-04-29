@@ -598,7 +598,7 @@ export default function VideoMeetComponent() {
 
             <Badge badgeContent={newMessages} max={999} color="orange">
               <IconButton
-                onClick={openChat}
+                onClick={() => setModal(!showModal)}
                 style={{ color: "white" }}
               >
                 <ChatIcon />
