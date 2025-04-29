@@ -63,13 +63,14 @@
   text-align: center;
 }
 
-.buttonContainer svg {
-  font-size: 500px;
+.buttonContainers svg {
+  font-size: 50px;
 }
 
 .conferenceView {
   display: flex;
-  padding: 1px;
+  flex-direction: row;
+  padding: 10px;
   gap: 10px;
 }
 
@@ -94,6 +95,17 @@
   height: 100%;
 }
 
+.chat{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px 0;
+}
+
+.chat i{
+  font-size: 25px;
+}
+
 .chattingArea {
   position: absolute;
   display: flex;
@@ -116,6 +128,6 @@
 }
 
 .chattingDisplay {
-  height: 80vh;
+  height: 75vh;
   overflow-y: scroll;
 }

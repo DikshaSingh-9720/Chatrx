@@ -485,10 +485,6 @@ export default function VideoMeetComponent() {
     setModal(false);
   };
 
-  let handleMessage = (e) => {
-    setMessage(e.target.value);
-  };
-
   const addMessage = (data, sender, socketIdSender) => {
     setMessages((prevMessages) => [
       ...prevMessages,
@@ -539,8 +535,10 @@ export default function VideoMeetComponent() {
           {showModal ? (
             <div className={styles.chatRoom}>
               <div className={styles.chatContainer}>
+                <div className={styles.chat}>
                 <h1>Chat</h1>
-
+                <i class="fa-solid fa-xmark" style={{height:"20px"}} onClick={closeChat}></i>
+                </div>
                 <div className={styles.chattingDisplay}>
                   {messages.length !== 0 ? (
                     messages.map((item, index) => {
@@ -600,7 +598,7 @@ export default function VideoMeetComponent() {
 
             <Badge badgeContent={newMessages} max={999} color="orange">
               <IconButton
-                onClick={() => setModal(!showModal)}
+                onClick={openChat}
                 style={{ color: "white" }}
               >
                 <ChatIcon />
@@ -613,6 +611,7 @@ export default function VideoMeetComponent() {
             ref={localVideoRef}
             autoPlay
           />
+          <h3  style={{color:"white" ,fontFamily:"sans-serif"}}>{username} Screen</h3>
 
           {videos.map((video) => (
             <div className={styles.conferenceView} key={video.socketId}>
@@ -626,6 +625,7 @@ export default function VideoMeetComponent() {
                 autoPlay
                 playsInline
               />
+              
             </div>
           ))}
         </div>
