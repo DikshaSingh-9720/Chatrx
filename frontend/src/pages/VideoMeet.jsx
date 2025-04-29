@@ -56,11 +56,7 @@ export default function VideoMeetComponent() {
 
   let [videos, setVideos] = useState([]);
 
-  // TODO
-  // if(isChrome() === false) {
-
-  // }
-
+  
   useEffect(() => {
     getPermissions();
   }, []);
@@ -615,7 +611,7 @@ export default function VideoMeetComponent() {
             ref={localVideoRef}
             autoPlay
           />
-          <h2>{username} Screen</h2>
+          <h3 style={{color:"white"}}>{username}</h3>
 
           {videos.map((video) => (
             <div className={styles.conferenceView} key={video.socketId}>
