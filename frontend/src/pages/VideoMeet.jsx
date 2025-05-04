@@ -11,12 +11,14 @@ import MicOffIcon from "@mui/icons-material/MicOff";
 import ScreenShareIcon from "@mui/icons-material/ScreenShare";
 import StopScreenShareIcon from "@mui/icons-material/StopScreenShare";
 import ChatIcon from "@mui/icons-material/Chat";
+import CloseIcon from '@mui/icons-material/Close';
+
 import server from "../environment";
 
 const server_url = server;
 
-var connections = {};
-const iceCandidatesQueue = {};
+var connections = ({});
+const iceCandidatesQueue = ({});
 
 const peerConfigConnections = {
   iceServers: [{ urls: "stun:stun.l.google.com:19302" }],
@@ -38,7 +40,7 @@ export default function VideoMeetComponent() {
 
   let [screen, setScreen] = useState(); //screenshare
 
-  let [showModal, setModal] = useState(true); //popups
+  let [showModal, setShowModal] = useState(false); //popups
 
   let [screenAvailable, setScreenAvailable] = useState();
 
@@ -126,7 +128,7 @@ export default function VideoMeetComponent() {
       getUserMedia();
       console.log("SET STATE HAS ", video, audio);
     }
-  }, [audio, video]);
+  }, [video, audio]);
 
   let getMedia = () => {
     setVideo(videoAvailable);
@@ -468,17 +470,18 @@ export default function VideoMeetComponent() {
     try {
       let tracks = localVideoRef.current.srcObject.getTracks();
       tracks.forEach((track) => track.stop());
+      
     } catch (e) {}
     window.location.href = "/";
   };
 
   let openChat = () => {
-    setModal(true);
+    setShowModal(true);
     setNewMessages(0);
   };
 
   let closeChat = () => {
-    setModal(false);
+    setShowModal(false);
   };
 
   let handleMessage = (e) => {
@@ -501,8 +504,9 @@ export default function VideoMeetComponent() {
     setMessage("");
   };
 
-  let connect = () => {
+  let connect = async () => {
     setAskForUsername(false);
+    await getPermissions();
     getMedia();
   };
 
@@ -531,13 +535,15 @@ export default function VideoMeetComponent() {
           
         </div>
       ) : (
-        <div className={styles.meetVideoContainer}>
+        <div className={styles.meetVideoContainer} onClick={handleMessage}>
           {showModal ? (
             <div className={styles.chatRoom}>
               <div className={styles.chatContainer}>
                 <div className={styles.chat}>
                 <h1>Chat</h1>
-                <i class="fa-solid fa-xmark" onClick={closeChat} style={{height:"25px"}}></i>
+                <IconButton onClick={closeChat}>
+  <CloseIcon />
+</IconButton>
                 </div>
                 <div className={styles.chattingDisplay}>
                   {messages.length !== 0 ? (
@@ -598,7 +604,7 @@ export default function VideoMeetComponent() {
 
             <Badge badgeContent={newMessages} max={999} color="orange">
               <IconButton
-                onClick={() => setModal(!showModal)}
+                onClick={openChat}
                 style={{ color: "white" }}
               >
                 <ChatIcon />
@@ -614,7 +620,7 @@ export default function VideoMeetComponent() {
           <h3 style={{color:"white"}}>{username}</h3>
 
           {videos.map((video) => (
-            <div className={styles.conferenceView} key={video.socketId}>
+            <div className={styles.conferenceView} key={video.socketId} >
               <video
                 data-socket={video.socketId}
                 ref={(ref) => {
@@ -624,6 +630,7 @@ export default function VideoMeetComponent() {
                 }}
                 autoPlay
                 playsInline
+                className={styles.videoElement}
               />
             </div>
           ))}
