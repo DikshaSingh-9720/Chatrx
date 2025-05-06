@@ -8,9 +8,9 @@ export default function LandingPage() {
 
     return (
         <div className='landingPageContainer'>
-            <nav>
+            <nav className='navbar'>
                 <div className='navHeader'>
-                    <img src="/chatrxlogo.png" alt="" />
+                    <img src="/chatrxlogo.png"style={{width:"300px"}} />
                 </div>
                 <div className='navlist'>
                     <p onClick={() => {

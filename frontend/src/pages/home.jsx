@@ -26,7 +26,7 @@ function HomeComponent() {
 
                 <div style={{ display: "flex",padding:"10px", alignItems: "center" }}>
 
-                    <img src="/chatrxwhite.png" className='chatrxlogo'/>
+                    <img src="/chatrxwhite.png" className='chatrxlogo' onClick={() => { navigate("/") }}/>
                 </div>
 
                 <div className='links' style={{ display: "flex",padding:"10px", alignItems: "center" }}>

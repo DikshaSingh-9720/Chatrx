@@ -1,48 +1,135 @@
-*{
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #f2f2f2;
+}
+
+/* Animated Gradient Background with Overlay */
+.videomeet {
+  position: relative;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  min-height: 100vh;
+  background: linear-gradient(-45deg, #00bcd4, #8e24aa, #2196f3, #4caf50);
+  background-size: 400% 400%;
+  animation: gradientFlow 20s ease infinite;
   overflow: hidden;
 }
 
-.videomeet {
-  padding: 50px;
-  display: flex;
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
+/* Optional blur overlay if using an image (you can skip this if not needed) */
+/* 
+.videomeet::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(4px);
+  background-color: rgba(255, 255, 255, 0.1);
+  z-index: 0;
+}
+*/
+
+.connect,
+.myvideo {
+  z-index: 1;
+}
+
+/* Connect Section Card */
 .connect {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 30px 50px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 16px;
+  padding: 40px 30px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  backdrop-filter: blur(8px);
+  color: white;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.connect h1 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+.connect p {
+  font-size: 16px;
+  margin-bottom: 20px;
 }
 
 .connect button {
-  margin: 15px;
-  padding: 13px;
+  margin:  0 15px;
+  padding: 13px 25px;
   background-color: #7c4dff;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
+.connect button:hover {
+  background-color: #5e35b1;
+}
+
+/* Video Styling */
 .myvideo {
-  width: auto;
+  width: 400px;
   border-radius: 20px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
+/* Responsive Design */
 @media (max-width: 768px) {
   .videomeet {
-    display: grid;
+    flex-direction: column;
+    padding: 30px 20px;
   }
+
   .connect h1 {
     font-size: 22px;
   }
+
   .connect p {
     font-size: 14px;
   }
+
   .myvideo {
     width: 75vw;
   }
 }
+
 @media (max-width: 480px) {
+  .connect {
+    padding: 25px 15px;
+  }
+
   .connect h1 {
     font-size: 20px;
+  }
+
+  .connect p {
+    font-size: 13px;
+  }
+
+  .connect button {
+    font-size: 14px;
+    padding: 10px 20px;
   }
 }
 
@@ -50,108 +137,174 @@
   display: flex;
   position: relative;
   height: 100vh;
-  background: rgb(1, 4, 48);
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  overflow: hidden;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
+/* User's small video preview */
 .meetUserVideo {
   position: absolute;
   bottom: 10vh;
-  height: 20vh;
-  left: 0;
-  width: 30vw;
+  left: 20px;
+  height: 30vh;
+  width: 20vw;
   border-radius: 20px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
+  z-index: 2;
+  object-fit: cover;
 }
 
+/* Button group at bottom */
 .buttonContainers {
   position: absolute;
-  width: auto;
-  bottom: 0;
-  text-align: center;
+  width: 100%;
+  bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  z-index: 5;
 }
 
 .buttonContainers svg {
-  font-size: 50px;
+  font-size: 40px;
+  color: white;
+  background-color: #1f1f1f;
+  padding: 12px;
+  border-radius: 50%;
+  transition: transform 0.2s ease, background-color 0.3s;
+  cursor: pointer;
 }
 
+.buttonContainers svg:hover {
+  background-color: #7c4dff;
+  transform: scale(1.1);
+}
+
+/* Grid-style conference video layout */
 .conferenceView {
   display: flex;
   flex-wrap: wrap;
-  padding: 50px 0;
+  justify-content: center;
+  gap: 20px;
+  padding: 80px 20px 20px;
+  width: 100%;
+  overflow-y: auto;
 }
 
 .conferenceView video {
-  display: flex;
-  flex-wrap: wrap;
-  width: 10vw;  
-  height: 20vh;
-  min-width: 30vw;
-  border-radius: 10px;
+  width: 20vw;
+  height: 25vh;
+  border-radius: 12px;
+  background-color: #111;
+  object-fit: cover;
+  box-shadow: 0 0 10px rgba(0,0,0,0.4);
 }
 
+/* Chat panel */
 .chatRoom {
   position: absolute;
   height: 100vh;
   right: 0;
-  background: white;
+  top: 0;
+  background: #1e1e1e;
+  color: white;
   width: 100vw;
-  padding-inline: 20px; 
+  max-width: 400px;
+  padding: 20px;
+  box-shadow: -4px 0 12px rgba(0,0,0,0.5);
+  z-index: 10;
 }
 
 .chatContainer {
-  position: relative;
   height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.chat{
+.chattingDisplay {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  padding: 10px;
+  background: #2c2c2c;
+  border-radius: 10px;
+}
+
+/* Individual chat message */
+.chat {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  margin: 10px 0;
+  align-items: center;
+  padding: 6px 10px;
+  border-radius: 6px;
+  background-color: #333;
+  color: #f1f1f1;
+  margin-bottom: 10px;
 }
 
-.chat i{
-  font-size: 25px;
+.chat i {
+  font-size: 22px;
+  color: #aaa;
 }
 
+/* Chat input + send button */
 .chattingArea {
-  position: absolute;
   display: flex;
-  flex-direction: row;
+  gap: 10px;
+  align-items: center;
 }
 
+.chattingArea input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: #2b2b2b;
+  color: white;
+}
+
+.chattingArea Button {
+  padding: 10px 16px;
+  font-weight: bold;
+  font-size: 1rem;
+  border: none;
+  background-color: #7c4dff;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.chattingArea Button:hover {
+  background-color: #5e35b1;
+}
+
+/* Responsive styles */
 @media (min-width: 768px){
-  .buttonContainers {
-    text-align: left;
+  .chatRoom {
+    width: 30vw;
   }
 
-  .chatRoom{
-    width: 40vw;
-  }
   .chattingArea {
     display: grid;
-    gap: 20px;
+    grid-template-columns: 1fr auto;
   }
 }
 
 @media (max-width: 768px) {
-  .buttonContainers {
-    /* text-align: left; */
+  .conferenceView video {
+    width: 80vw;
   }
-  .chattingArea {
-    /* display: grid; */
-    gap: 20px;  
-  }
-  .chatRoom{
-    z-index: 1;
-  }
-}
-.chattingArea Button {
-  padding: 0 1rem;
-  font-weight: bold;
-  font-size: 1rem;
-}
 
-.chattingDisplay {
-  height: 75vh;
-  overflow-y: scroll;
+  .meetUserVideo {
+    width: 50vw;
+  }
+
+  .chatRoom {
+    width: 100vw;
+  }
 }

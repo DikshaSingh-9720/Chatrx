@@ -1,16 +1,22 @@
 *{
   font-family: poppins,system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  /* overflow:scroll !important; */
 }
 
-.landingPageContainer {
-  width: 100vw;
-  height: 100vh;
-  background: url("/public/background.png");
-  background-repeat: no-repeat;
-  background-size: cover;
-  color: white;
-  overflow: hidden;
+.landingPageContainer {  
+    width: 100vw;
+    height: auto;
+    background: url('../public/background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
 }
+
+
 
 .landingPageContainer nav {
   padding-inline: 1.2rem;
@@ -36,21 +42,18 @@
 }
 
 .navlist p:hover{
-  background-color: rgb(176, 169, 169);
-  color: black;
-  padding: 5px;
-  border-radius: 5px;
+ text-shadow: 1px 1px #fff;
 }
 
 .landingMainContainer {
   display: flex;
   justify-content: space-between;
   padding-inline: 3rem;
-  /* height: 30vh; */
+  height: 100vh;
   position: relative;
-  bottom: 20vh;
+  bottom: 10vh;
   align-items: center;
-  margin: 50px;
+  overflow-y: auto;
 }
 
 .landingMainContainer>div:nth-child(1) {
@@ -77,11 +80,17 @@
   width: auto;
 }
 @media (max-width: 1024px) {
+  
+  .landingPageContainer nav {
+    align-items: center;
+    text-align: center;
+}
   .landingMainContainer {
       flex-direction: column;
       text-align: center;
       gap: 2rem;
       height: auto;
+
   }
 
   .landingMainContainer > div:nth-child(1) {
@@ -93,6 +102,12 @@
       height: auto;
       max-width: 80%;
   }
+
+  .landingMainContainer > div:nth-child(1) div[role='button'] {
+    padding: 0.8rem;
+    margin: 15px auto;
+    
+}
 }
 
 @media (max-width: 768px) {
@@ -117,10 +132,16 @@
 
   .landingMainContainer > div:nth-child(1) div[role='button'] {
       padding: 0.8rem;
+      margin: 15px auto;
+      
   }
 
   .landingMainContainer > div:nth-child(1) div[role='button'] a {
       font-size: 1.4rem;
+  }
+
+  .landingMainContainer > div:nth-child(2) img{
+    height: auto;
   }
 }
 
@@ -132,6 +153,7 @@
 
   .landingMainContainer {
       padding: 1rem;
+      margin: 50px;
   }
 
   .landingMainContainer > div:nth-child(1) {
@@ -140,6 +162,7 @@
 
   .landingMainContainer > div:nth-child(1) div[role='button'] {
       padding: 0.6rem;
+      margin: 15px auto;
   }
 
   .landingMainContainer > div:nth-child(1) div[role='button'] a {
@@ -152,14 +175,14 @@
 }
 
 /* Home Component */
-.home{
-  overflow: hidden;
-}
+
 
 .navBar {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: sticky;
+  top: 0;
   padding-inline: 20px;
   text-align: center;
   margin-top: 30px;
@@ -223,7 +246,7 @@
     display: flex;
     justify-content: center;    
     position: relative;
-    top: 50vh;
+    top: 22vh;
     text-align: center;
   }
 
@@ -236,7 +259,7 @@
     display: flex;
     justify-content: center;   
     position: relative;
-    bottom: 40vh;
+    bottom: 50vh;
   }
   .rightPanel img{
     width: 60vw;
@@ -253,14 +276,15 @@
   .links{
     margin: 10px;
   }
+  
   .meetContainer{
     display: flex;
-    flex-direction: column;    
+    flex-direction: column;
   }
 
   .leftPanel{
     position: relative;
-    top: 25vh;
+    top: 15vh;
     text-align: center;
   }
 
@@ -271,12 +295,12 @@
   }
 
   .join button{
-    padding: 5px;
+    padding: 5px 0;
   }
 
   .rightPanel{
     position: relative;
-    bottom: 55vh;
+    bottom: 60vh;
   }
   .rightPanel img{
     width: 60vw;
