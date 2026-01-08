@@ -11,15 +11,14 @@ import MicOffIcon from "@mui/icons-material/MicOff";
 import ScreenShareIcon from "@mui/icons-material/ScreenShare";
 import StopScreenShareIcon from "@mui/icons-material/StopScreenShare";
 import ChatIcon from "@mui/icons-material/Chat";
-import CloseIcon from '@mui/icons-material/Close';
-
+import CloseIcon from "@mui/icons-material/Close";
 
 import server from "../environment";
 
 const server_url = server;
 
-var connections = ({});
-const iceCandidatesQueue = ({});
+var connections = {};
+const iceCandidatesQueue = {};
 
 const peerConfigConnections = {
   iceServers: [{ urls: "stun:stun.l.google.com:19302" }],
@@ -59,7 +58,6 @@ export default function VideoMeetComponent() {
 
   let [videos, setVideos] = useState([]);
 
-  
   useEffect(() => {
     getPermissions();
   }, []);
@@ -471,7 +469,6 @@ export default function VideoMeetComponent() {
     try {
       let tracks = localVideoRef.current.srcObject.getTracks();
       tracks.forEach((track) => track.stop());
-      
     } catch (e) {}
     window.location.href = "/";
   };
@@ -516,24 +513,28 @@ export default function VideoMeetComponent() {
       {askForUsername === true ? (
         <div className={styles.videomeet}>
           <div>
-            <video className={styles.myvideo} ref={localVideoRef} autoPlay muted />
+            <video
+              className={styles.myvideo}
+              ref={localVideoRef}
+              autoPlay
+              muted
+            />
           </div>
           <div className={styles.connect}>
-          <h1>Ready to connect</h1>
-          <p>So let's go to the chatroom</p>
-          <br />
-          <TextField 
-            id="outlined-basic"
-            label="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-            variant="outlined"
-          />
-          <Button variant="contained" onClick={connect}>
-            Connect
-          </Button>
-        </div>
-          
+            <h1>Ready to connect</h1>
+            <p>So let's go to the chatroom</p>
+            <br />
+            <TextField
+              id="outlined-basic"
+              label="Username"
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+              variant="outlined"
+            />
+            <Button variant="contained" onClick={connect}>
+              Connect
+            </Button>
+          </div>
         </div>
       ) : (
         <div className={styles.meetVideoContainer} onClick={handleMessage}>
@@ -541,10 +542,10 @@ export default function VideoMeetComponent() {
             <div className={styles.chatRoom}>
               <div className={styles.chatContainer}>
                 <div className={styles.chat}>
-                <h1>Chat</h1>
-                <IconButton onClick={closeChat}>
-  <CloseIcon />
-</IconButton>
+                  <h1>Chat</h1>
+                  <IconButton onClick={closeChat} style={{ color: "white" }}>
+                    <CloseIcon />
+                  </IconButton>
                 </div>
                 <div className={styles.chattingDisplay}>
                   {messages.length !== 0 ? (
@@ -604,10 +605,7 @@ export default function VideoMeetComponent() {
             )}
 
             <Badge badgeContent={newMessages} max={999} color="orange">
-              <IconButton
-                onClick={openChat}
-                style={{ color: "white" }}
-              >
+              <IconButton onClick={openChat} style={{ color: "white" }}>
                 <ChatIcon />
               </IconButton>
             </Badge>
@@ -618,10 +616,10 @@ export default function VideoMeetComponent() {
             ref={localVideoRef}
             autoPlay
           />
-          <h3 style={{color:"white"}}>{username}</h3>
+          <h3 style={{ color: "white" }}>{username}</h3>
 
           {videos.map((video) => (
-            <div className={styles.conferenceView} key={video.socketId} >
+            <div className={styles.conferenceView} key={video.socketId}>
               <video
                 data-socket={video.socketId}
                 ref={(ref) => {

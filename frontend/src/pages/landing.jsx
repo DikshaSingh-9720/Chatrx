@@ -7,7 +7,7 @@ export default function LandingPage() {
     const router = useNavigate();
 
     return (
-        <div className='landingPageContainer'>
+        <div className='landingPageContainer' >
             <nav className='navbar'>
                 <div className='navHeader'>
                     <img src="/chatrxlogo.png"style={{width:"300px"}} />

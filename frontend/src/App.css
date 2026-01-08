@@ -5,7 +5,7 @@
 
 .landingPageContainer {  
     width: 100vw;
-    height: auto;
+    height: 100vh;
     background: url('../public/background.png');
     background-repeat: no-repeat;
     background-size: cover;
@@ -13,7 +13,7 @@
     color: white;
     display: flex;
     flex-direction: column;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 
 
@@ -22,7 +22,7 @@
   padding-inline: 1.2rem;
   padding-block: 1.6rem;
   position: relative;
-  bottom: 5vh;
+  bottom: 10vh;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -53,31 +53,37 @@
   position: relative;
   bottom: 10vh;
   align-items: center;
-  overflow-y: auto;
+  line-height: 1.7;
 }
 
 .landingMainContainer>div:nth-child(1) {
-  font-size: 2.2rem;
+  font-size: 2rem;
+}
+
+.landingMainContainer p{
+  font-size: 1.7rem;
 }
 
 
 .landingMainContainer>div:nth-child(1) div[role='button'] {
   background: #00E5FF;
   width: fit-content;
-  padding: 1rem;
+  padding: 0.5rem 1.5rem;
   border-radius: 20px;
   margin-top: 1.9rem;
+  font-weight: 600;
 }
 
 .landingMainContainer>div:nth-child(1) div[role='button'] a {
   text-decoration: none;
   color: white;
-  font-size: 1.7rem;
+  font-size: 1.5rem;
 }
 
 .landingMainContainer>div:nth-child(2) img {
   height: 70vh;
   width: auto;
+  font-size: 1.5rem;
 }
 @media (max-width: 1024px) {
   
@@ -176,6 +182,11 @@
 
 /* Home Component */
 
+.home{
+  background: #fff;
+  height: 100vh;
+  overflow-y: auto;
+}
 
 .navBar {
   display: flex;
@@ -196,8 +207,7 @@
 .meetContainer {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  padding-inline: 20px;
-  height: 80vh;
+  padding: 50px;
   gap: 10vw;
   justify-content: center;
   margin: 50px;

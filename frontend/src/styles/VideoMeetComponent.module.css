@@ -5,6 +5,7 @@ body {
   background-color: #f2f2f2;
 }
 
+
 /* Animated Gradient Background with Overlay */
 .videomeet {
   position: relative;
@@ -14,35 +15,11 @@ body {
   align-items: center;
   gap: 40px;
   min-height: 100vh;
-  background: linear-gradient(-45deg, #00bcd4, #8e24aa, #2196f3, #4caf50);
+  background: #ffffff;
   background-size: 400% 400%;
-  animation: gradientFlow 20s ease infinite;
   overflow: hidden;
 }
 
-@keyframes gradientFlow {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-/* Optional blur overlay if using an image (you can skip this if not needed) */
-/* 
-.videomeet::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  backdrop-filter: blur(4px);
-  background-color: rgba(255, 255, 255, 0.1);
-  z-index: 0;
-}
-*/
 
 .connect,
 .myvideo {
@@ -51,12 +28,12 @@ body {
 
 /* Connect Section Card */
 .connect {
-  background: rgba(255, 255, 255, 0.15);
+  background: rgb(255, 255, 255);
   border-radius: 16px;
   padding: 40px 30px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
   backdrop-filter: blur(8px);
-  color: white;
+  color: rgb(33, 33, 33);
   text-align: center;
   transition: all 0.3s ease;
 }
@@ -137,7 +114,7 @@ body {
   display: flex;
   position: relative;
   height: 100vh;
-  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  background: linear-gradient(to right, #f7fbfc, #a0d0de, #bbc8cd);
   overflow: hidden;
   padding: 20px;
   box-sizing: border-box;
@@ -148,7 +125,7 @@ body {
   position: absolute;
   bottom: 10vh;
   left: 20px;
-  height: 30vh;
+  height: 40vh;
   width: 20vw;
   border-radius: 20px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.7);
@@ -194,8 +171,8 @@ body {
 }
 
 .conferenceView video {
-  width: 20vw;
-  height: 25vh;
+  width: 30vw;
+  height: 50vh;
   border-radius: 12px;
   background-color: #111;
   object-fit: cover;
@@ -231,7 +208,9 @@ body {
   padding: 10px;
   background: #2c2c2c;
   border-radius: 10px;
+  color: #f1f1f1;
 }
+
 
 /* Individual chat message */
 .chat {
@@ -247,7 +226,7 @@ body {
 
 .chat i {
   font-size: 22px;
-  color: #aaa;
+  color: #ffffff;
 }
 
 /* Chat input + send button */
@@ -264,8 +243,9 @@ body {
   border-radius: 8px;
   font-size: 1rem;
   background-color: #2b2b2b;
-  color: white;
+  color: white!important;
 }
+
 
 .chattingArea Button {
   padding: 10px 16px;

@@ -14,16 +14,18 @@ body {
   padding: 0;
 }
 
+.landingPageContainer ::-webkit-scrollbar{
+  display: none;
+}
 
-:root {
-  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color: rgb(0,0,0,);
-  background-color: #fff;
+.landingMainContainer::-webkit-scrollbar{
+  display: none;
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.home::-webkit-scrollbar{
+  display: none;
+}
+
+.meetContainer::-webkit-scrollbar{
+  display: none;
 }
